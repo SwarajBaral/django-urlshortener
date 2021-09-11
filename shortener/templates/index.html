@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.1/dist/css/bootstrap.min.css" integrity="sha384-F3w7mX95PdgyTmZZMECAngseQB83DfGTowi0iMjiWaeVhAn4FJkqJByhZMI3AhiU" crossorigin="anonymous">
+	<title>Url Shortener</title>
+	<style>
+		html, body{
+			background: #e3e3e3;
+		}
+		body{
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+			height: 90vh;
+		}
+		#url-short{
+			background: whitesmoke;
+			height: 5em;
+			display: flex;
+			flex-direction: column;
+			align-items: center;
+			justify-content: center;
+		}
+		* {
+			/* outline: 1px solid red; */
+		}
+	</style>
+</head>
+<body>
+	<h1 align="center" class="primary">Atomit Url Shortener</h1>
+	<div class="container col-md-6">
+		<form id="form">
+			{% csrf_token %}
+		  <div class="form-group row">
+		  	<div class="col-md-10">
+		    <label for="url">URL to shorten:</label>
+		    <input type="url" class="form-control" id="url" name="url" placeholder="www.examplelongurl.com/example/long/routes/and/subroutes" />
+		  	</div>
+		  	<div class="col-md-2 col-xs-12 text-center mt-4">
+		    <button class="btn btn-primary" type="submit" id="shorten" style="width:100%">Shorten</button>
+		  	</div>
+		  </div>
+		</form>
+		<section class="url-op pt-3">
+			<h2>Shortened Link:</h2>
+			<h3 id="url-short">Hello there</h3>
+		</section>
+	</div>
+	<script
+	  src="https://code.jquery.com/jquery-3.6.0.js"
+	  integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk="
+	  crossorigin="anonymous"></script>
+	<script type="text/javascript">
+		$(document).on("submit", "#form", function(e){
+			e.preventDefault();
+			
+			$.ajax({
+				type: "POST",
+				url: "/shortit",
+				data : {
+					link: $('#url').val(),
+					csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
+				},
+				success: function(data){
+					$('#url-short').html("localhost:8000/"+data);
+				}
+			})
+		})
+	</script>
+</body>
+</html>
