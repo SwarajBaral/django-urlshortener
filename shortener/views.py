@@ -25,7 +25,7 @@ def shortit(request):
 
 def use(request, pk):
 	shortened_url = Url.objects.filter(uuid=pk)
-	print(shortened_url)
+	# print(shortened_url)
 	if shortened_url:
 		link = shortened_url[0].link
 		return redirect(link)
