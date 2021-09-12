@@ -65,7 +65,7 @@
 					csrfmiddlewaretoken: $('input[name="csrfmiddlewaretoken"]').val(),
 				},
 				success: function(data){
-					$('#url-short').html("localhost:8000/"+data);
+					$('#url-short').html("https://atomit-shortener.herokuapp.com/"+data);
 				}
 			})
 		})
