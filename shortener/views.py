@@ -4,7 +4,7 @@ from .models import Url
 import uuid
 # Create your views here.
 def index(request):
-	return render(request, "index.html")
+	return render(request, "shortener/index.html")
 
 
 def shortit(request):
