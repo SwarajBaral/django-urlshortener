@@ -1,1 +1,4 @@
 env/
+url_sh/settings.py
+Procfile
+runtime.txt
