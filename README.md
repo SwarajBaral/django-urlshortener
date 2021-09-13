@@ -9,4 +9,4 @@
 	</li>
 </ul>
 
-<b>NB</b>: This repo is missing <b>settings.py</b> file for security reasons. Please start a fresh project and use the default Django settings.py. It should work fine for development. For production, please follow the Django checklist for deployment.
+<b>NB</b>: This repo is missing <code>settings.py</code> file for security reasons. Please start a fresh project and use the default Django <code>settings.py</code>. It should work fine for development. For production, please follow the Django checklist for deployment.
